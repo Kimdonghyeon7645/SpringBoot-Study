@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 1. 추가적으로 (CoreMatchers같은) 라이브러리가 필요하지 않음
 2. 자동완성이 확실하게 지원
  */
+// fixed : Gradle 버전이 4.10.2 뒤라면, 테스트 실행시 에러난다. 그레들 버전을 다운그레이드 해주자. (gradlew wrapper --gradle-version 4.10.2)
 
 public class HelloResponseDtoTest {
 
