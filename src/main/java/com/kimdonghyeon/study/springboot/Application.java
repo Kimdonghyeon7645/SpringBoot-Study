@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 이 위치부터 설정을 읽음 -> 항상 이 클래스는 프로젝트 최상단에 위치해야함!
  */
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) {    // main 메소드 왼쪽 화살표 클릭 (메소드 실행) -> 수동으로 서버(WAS) 실행
         SpringApplication.run(Application.class, args);     // 내장 WAS(웹 어플리케이션 서버) 실행
     }
 }
