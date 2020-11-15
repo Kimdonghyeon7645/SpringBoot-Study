@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest     // 별 설정이 없으면 H2 데이터베이스를 자동으로 실행
 public class PostsRepositoryTest {
 
     @Autowired
@@ -29,11 +29,13 @@ public class PostsRepositoryTest {
         String title = "테스트 게시글";
         String content = "테스트 본문";
 
-        postsRepository.save(Posts.builder()    // postsRepository.save : 테이블 posts에서, 인자값에 id값이 있으면 update, 없으면 insert 쿼리 실행
+        postsRepository.save(Posts.builder()
                 .title(title)
                 .content(content)
                 .author("dongdongYee@gmail.com")
                 .build());
+        // postsRepository.save : 테이블 posts에서, 인자값에 id값이 있으면 update, 없으면 insert 쿼리 실행
+        // save() 시 이전에 조회한 후, 기존에 있는 데이터는 update, 없던 새로운 데이터는 insert 
 
         //when
         List<Posts> postsList = postsRepository.findAll();      // findAll() : posts 테이블의 모든 데이터 조회해오는 메소드
