@@ -29,14 +29,14 @@ public class PostsRepositoryTest {
         String title = "테스트 게시글";
         String content = "테스트 본문";
 
-        postsRepository.save(Posts.builder()
+        postsRepository.save(Posts.builder()    // postsRepository.save : 테이블 posts에서, 인자값에 id값이 있으면 update, 없으면 insert 쿼리 실행
                 .title(title)
                 .content(content)
                 .author("dongdongYee@gmail.com")
                 .build());
 
         //when
-        List<Posts> postsList = postsRepository.findAll();
+        List<Posts> postsList = postsRepository.findAll();      // findAll() : posts 테이블의 모든 데이터 조회해오는 메소드
 
         //then
         Posts posts = postsList.get(0);
