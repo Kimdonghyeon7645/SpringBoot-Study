@@ -33,6 +33,11 @@ public class Posts {    // 여기서 Posts 클래스 -> 실제 DB 테이블과 �
         this.content = content;
         this.author = author;
     }
+
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
 
 /*
