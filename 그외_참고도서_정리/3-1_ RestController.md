@@ -1,4 +1,4 @@
-# 1-1. RestController
+# 3-1. RestController
 
 - ### **RestController** : *REST*를 위한 전용 컨트롤러  
 -> 대부분 HTML 대신 **텍스트, JSON**으로 정보 전송  
