@@ -1,4 +1,4 @@
-package com.kimdonghyeon.study.springboot.domain;
+package com.kimdonghyeon.study.springboot.domain.posts;
 
 import com.kimdonghyeon.study.springboot.domain.posts.Posts;
 import com.kimdonghyeon.study.springboot.domain.posts.PostsRepository;
