@@ -1,5 +1,7 @@
-package com.kimdonghyeon.study.springboot.domain.posts;
+package com.kimdonghyeon.study.springboot.domain;
 
+import com.kimdonghyeon.study.springboot.domain.posts.Posts;
+import com.kimdonghyeon.study.springboot.domain.posts.PostsRepository;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
