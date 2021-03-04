@@ -1,4 +1,6 @@
+### 직접 추가한 값들
 .idea
+application-oauth.properties
 
 ### Gradle template
 .gradle
