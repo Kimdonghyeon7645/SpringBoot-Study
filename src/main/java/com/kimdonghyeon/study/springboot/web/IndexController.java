@@ -1,5 +1,6 @@
 package com.kimdonghyeon.study.springboot.web;
 
+import com.kimdonghyeon.study.springboot.config.auth.dto.SessionUser;
 import com.kimdonghyeon.study.springboot.service.posts.PostsService;
 import com.kimdonghyeon.study.springboot.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -9,11 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 
+import javax.servlet.http.HttpSession;
+
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
 
     private final PostsService postsService;
+    private final HttpSession httpSession;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -22,6 +26,16 @@ public class IndexController {
          서버 텀플릿 엔진(여기선 머스테치)에서 사용 가능한 객체를, Model 객체에 저장 가능
          여기선 postsService.findAllDesc() 의 반환 값을 posts 라는 이름으로 index.mustache 에 전달
         */
+
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        /*
+         이전에 CustomOAuth2UserService에서 로그인 성공시 세션에 SessionUser를 저장하게 구성했음
+         -> 로그인 성공시 값을 가져올 수 있음
+         */
+        if(user != null) {      // 세션에 저장된 값이 있을 때만, model에 userName으로 등록
+            model.addAttribute("userName", user.getName());
+        }
+
         return "index";
         /*
          머스테치 스타터 덕분에 컨트롤러에서 문자열 반환시, 앞의 경로(src/main/resources/templates) + 뒤의 파일 확장자(.mustache)는 자동으로 지정
