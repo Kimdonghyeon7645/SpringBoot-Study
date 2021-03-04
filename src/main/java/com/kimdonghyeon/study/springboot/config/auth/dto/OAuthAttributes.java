@@ -37,6 +37,9 @@ public class OAuthAttributes {
                 .nameAttributeKey(userNameAttributeName)
                 .build();
     }
+    /*
+     OAuth2User가 반환하는 사용자 정보가 Map(attributes)이라, 값 하나하나를 변환해야 함
+     */
 
     public User toEntity() {
         return User.builder()
@@ -46,4 +49,9 @@ public class OAuthAttributes {
                 .role(Role.GUEST)
                 .build();
     }
+    /* toEntity()
+     User 엔티티 생성
+     OAuthAttributes에서 엔티티를 생성하는 시점 = 처음 가입할 때
+     가입할 때 기본 권한을 GUEST로 주기 위해 -> .role(Role.GUEST)
+     */
 }
