@@ -33,7 +33,7 @@ public class IndexController {
          -> 로그인 성공시 값을 가져올 수 있음
          */
         if(user != null) {      // 세션에 저장된 값이 있을 때만, model에 userName으로 등록
-            model.addAttribute("userName", user.getName());
+            model.addAttribute("userProfileName", user.getName());
         }
 
         return "index";

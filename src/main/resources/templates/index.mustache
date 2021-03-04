@@ -10,26 +10,26 @@
 {{>layout/header}}
 {{! 위의 대괄호({}) 2개와 부등호(>)로 현재 머스테치 파일을 기준으로 다른 파일을 불러올 수 있음  }}
 
-<h1>임중도원이니, 사이후이 : 살아있는한 계속 힘쓴다</h1>
+<h1>임중도원, 사이후이</h1>
 <div class="col-md-12">
     <div class="row">
         <div class="col-md-6">
             <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
-            {{#userName}}   {{! 머스테치는 if문을 제공하지 않고, true/false 여부만 판단하는데, '#변수' 블록문은 변수가 존재할 때(true) 생성 }}
-                로그인 중인 계정 : <span id="user">{{userName}}</span>
+            {{#userProfileName}}   {{! 머스테치는 if문을 제공하지 않고, true/false 여부만 판단하는데, '#변수' 블록문은 변수가 존재할 때(true) 생성 }}
+                로그인 중인 계정 : <span id="user">{{userProfileName}}</span>
                 <a href="/logout" class="btn btn-info active" role="button">로그아웃</a>
                 <!-- /logout
                  스프링 시큐리티에서 기본적으로 제공하는 로그아웃 URL
                  (별도로 컨트롤러를 만들 필요 없음, SecurityConfig 클래스에서 URL 변경 가능)
                  -->
-            {{/userName}}
-            {{^userName}}   {{! '^변수' 블록문은 변수가 존재하지 않을 때(false) 생성 }}
+            {{/userProfileName}}
+            {{^userProfileName}}   {{! '^변수' 블록문은 변수가 존재하지 않을 때(false) 생성 }}
                 <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">구글 로그인</a>
                 <!-- /oauth2/authorization/google
                  스프링 시큐리티에서 기본적으로 제공하는 로그인 URL
                  (로그인처럼 별도로 컨트롤러를 만들 필요 없음)
                 -->
-            {{/userName}}
+            {{/userProfileName}}
         </div>
     </div>
     <br>
