@@ -1,5 +1,7 @@
 package com.kimdonghyeon.study.springboot.config.auth;
 
+import com.kimdonghyeon.study.springboot.config.auth.dto.OAuthAttributes;
+import com.kimdonghyeon.study.springboot.config.auth.dto.SessionUser;
 import com.kimdonghyeon.study.springboot.domain.user.User;
 import com.kimdonghyeon.study.springboot.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
