@@ -15,6 +15,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -40,6 +41,7 @@ public class PostsApiControllerTest {
     }
 
     @Test
+    @WithMockUser(roles="USER")     // 인증된 모의(가짜) 사용자를 만들어 사용 + roles에 권한 추가 가능
     public void Posts_등록하기() throws Exception {
         //given
         String title = "제목";
@@ -64,6 +66,7 @@ public class PostsApiControllerTest {
     }
 
     @Test
+    @WithMockUser(roles="USER")
     public void Posts_수정하기() throws Exception {
         //given
         Posts savedPosts = postsRepository.save(Posts.builder()
