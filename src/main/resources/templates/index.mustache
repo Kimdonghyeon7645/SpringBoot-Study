@@ -29,6 +29,12 @@
                  스프링 시큐리티에서 기본적으로 제공하는 로그인 URL
                  (로그인처럼 별도로 컨트롤러를 만들 필요 없음)
                 -->
+
+                <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">네이버 로그인</a>
+                <!-- /oauth2/authorization/naver
+                 네이버 로그인 URL은 application-oauth.properties에서 등록한 redirect-uri 값에 맞춰 자동으로 등록
+                 /oauth2/authorization/ 까지는 고정, 마지막 경로만 각 소셜 로그인 코드(naver, google 등) 사용
+                -->
             {{/userProfileName}}
         </div>
     </div>
