@@ -9,7 +9,7 @@
 으로 스프링 부트에 대한 기초부터 인프라까지 공부하고 있습니다.
 
 <div>
-<img src='https://user-images.githubusercontent.com/48408417/98798374-2b292600-2451-11eb-9c11-54cc64361e2d.png' width='200'>
-<img src='http://image.yes24.com/goods/38138619/800x0' width="200">
+<img src='https://user-images.githubusercontent.com/48408417/98798374-2b292600-2451-11eb-9c11-54cc64361e2d.png' height='300'>
+<img src='http://image.yes24.com/goods/38138619/800x0' height='300'>
 </div>
 
