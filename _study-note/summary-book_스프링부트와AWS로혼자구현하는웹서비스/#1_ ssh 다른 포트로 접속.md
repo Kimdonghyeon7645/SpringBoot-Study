@@ -8,8 +8,8 @@
 ```shell script
 sudo vim /etc/ssh/sshd_config
 # 으로, sshd 설정을 편집기로 열었을 때
-# '# Port 22'라는 주석된 포트 설정을 찾아주자.
-# 그리고 주석 풀고 원하는 포트로 변경해주자.
+# '# Port 22' 라고 써있는 곳을 찾아가서
+# 주석 지우고 'Port 원하는 포트' 라 작성(다중 포트도 설정 가능)하고 저장
 
 sudo service sshd restart   # 또는 sudo /etc/init.d/sshd restart
 # 해서 sshd를 재시작 해주자
