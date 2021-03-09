@@ -45,3 +45,17 @@
     6. **[Test Connection]** 클릭 -> 연결 테스트 실행
     7. *Connection Successful* 메시지 확인 후, **[Apply]**, **[Ok]** 차례대로 클릭해 최종 저장
     
+    저장 후, DB Borwer(왼쪽 사이드바 창)에 RDS 스키마가 뜨는 것을 확인하면 끝!
+    
+4. SQL 콘솔창 실행
+
+    1. **[Open SQL Console]** 클릭(위쪽의 네모 두개 겹쳐있는 아이콘) -> **[New SQL Console...]** 항목 선택 (콘솔 이름은 맘대로)  
+    2. 생성된 콘솔창에서 쿼리 작성 
+    
+       ```mysql-sql
+       use '웹콘솔에서 지정한 DB명';        # 쿼리 수행할 DB 선택하는 쿼리
+       ```
+       
+    3. 쿼리 실행은 드래그로 선택한 뒤, 회면 위의 초록 화살표(ctrl + enter) 클릭   
+       
+
