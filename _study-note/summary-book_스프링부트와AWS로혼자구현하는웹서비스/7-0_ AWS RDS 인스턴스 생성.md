@@ -103,6 +103,7 @@ RDS의 특징은,
     **초기 데이터베이스 이름을 지정** : 지정 안하면 aws rds에서 DB를 생성하지 않는다!!
     
     ![image](https://user-images.githubusercontent.com/48408417/110427001-66c7ba00-80ea-11eb-8db7-0723deebc2be.png)
+    
     중요하게 생각 안하고 넘겼더니, 나중에 DB 테이블이 없어서 헤메는 경우가 생겼다! [참고](https://github.com/jojoldu/freelec-springboot2-webservice/issues/275)
       
       
