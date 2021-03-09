@@ -50,12 +50,30 @@
 4. SQL 콘솔창 실행
 
     1. **[Open SQL Console]** 클릭(위쪽의 네모 두개 겹쳐있는 아이콘) -> **[New SQL Console...]** 항목 선택 (콘솔 이름은 맘대로)  
-    2. 생성된 콘솔창에서 쿼리 작성 
+    2. 생성된 콘솔창에서 **character_set, collation 설정** 쿼리 실행 
     
-       ```mysql-sql
-       use '웹콘솔에서 지정한 DB명';        # 쿼리 수행할 DB 선택하는 쿼리
-       ```
-       
-    3. 쿼리 실행은 드래그로 선택한 뒤, 회면 위의 초록 화살표(ctrl + enter) 클릭   
-       
+        ```mysql-sql
+        use '초기 DB 이름';     # 쿼리가 수행될 DB 선택         
+        # rds 생성때 지정한 '초기 DB 이름'값 인데, 까먹었어도 왼쪽 사이드바의 'Schemas' 에서 나와있으니 참고
+        
+        show variables like "c%";   # DB 선택된 상태에서, 현재 c로 시작하는(character_set, collation) 설정 확인
+        ```       
+        쿼리 실행은 드래그로 선택한 뒤, 위쪽의 **[Execute Statement]**(초록 화살표 아이콘, 단축키 : ctrl + enter) 클릭   
+        
+        쿼리 실행 결과가 아래에 뜨는데, 필드들 중에 MariaDB에서만 RDS 파라미터 그룹으론 변경 안되는 필드가 있음.  
+        -> 아래의 직접 변경하는 쿼리 실행
+        
+        ```mysql-sql        
+        alter database for_springboot
+            character set = 'utf8mb4'
+            collate = 'utf8mb4_general_ci';
+        
+        show variables like 'c%';   # 바뀐 결과를 확인
+        ```
 
+        **타임존**도 RDS 파라미터 그룹으로 잘 적용됬는지 아래 쿼리로 확인
+        ```mysql-sql
+        select @@time_zone, now();  # 타임존도 겸사겸사 확인
+        ```
+        
+    3. 테이블 생성, 삽입 쿼리 실행 (한글명 테스트) 
