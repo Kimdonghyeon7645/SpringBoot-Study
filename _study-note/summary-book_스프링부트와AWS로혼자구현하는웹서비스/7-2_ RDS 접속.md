@@ -99,4 +99,23 @@
     
 ### 3. EC2에서 RDS 접속
 
+1. 일단 6장에서처럼 ec2에 ssh 접속 (맥: ssh 서비스명, 윈도우: putty)
+2. MySQL 접근 테스트를 위해 MySQL CLI 설치
+    
+    ```shell script
+    sudo yum install mysql
+    ```
 
+3. 설치 후, 로컬에서 접근하듯이 계정, 비밀번호, 호스트 주소를 사용해 RDS에 접속
+
+    ```shell script
+    mysql -u 계정 -p -h Host주소
+    ```
+
+4. 패스워드 입력하란 메시지 나오면, 패스워드까지 입력
+
+하면 EC2에서 cli환경으로 RDS에 접속되는 것을 확인!
+
+```mysql-sql
+show databases;     # 실제 생성한 RDS가 맞는지 확인 차원으로 쿼리 실행
+```
