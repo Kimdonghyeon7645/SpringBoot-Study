@@ -27,9 +27,21 @@
 2. 인텔리제이 **Database 플러그인** 설치 
     
     1. shift 더블 클릭해 All 검색 창 띄우기 
-    2. **Plugins** 검색후, 클릭해서 플러그인 창 띄우기
-    3. **Database Navigator** 검색후, **[Install]** 클릭해서 설치
+    2. **Plugins** 검색 후, 클릭해 플러그인 창 띄우기
+    3. **Database Navigator** 검색 후, **[Install]** 클릭해서 설치
     
-3. **DatabaseBrowser** 실행
+3. **DatabaseBrowser** 실행 -> RDS 접속 정보 등록
 
+    1. ctrl+shift+a 으로 Action 검색 창 띄우기 (맥OS는 ctrl대신 command키)
+    2. **Database Browser** 검색 후, 실행
+    3. 그러면 프로젝트 왼쪽 사이드바에 **DB Browser**가 생김
+    4. **[+]** 아이콘 클릭 -> **MySQL** 클릭해서 설정 창 띄우기
+    5. 이전에 생성한 RDS 정보를 차례대로 등록
+        
+        - Name, Description : DB 이름과 설명 등록
+        - **Host : RDS의 엔드 포인트** 등록
+        - **User, Password : RDS의 마스터 계정명과 비밀번호** 등록
+        
+    6. **[Test Connection]** 클릭 -> 연결 테스트 실행
+    7. *Connection Successful* 메시지 확인 후, **[Apply]**, **[Ok]** 차례대로 클릭해 최종 저장
     
