@@ -88,6 +88,7 @@
         insert into test(content) values ('테스트입니다😎');
         
         select * from test;
+        # commit 아이콘 클릭하면 실제 DB에 반영된다!
         ```
         위 쿼리를 실행해서, 한글 데이터도 잘 등록되지 확인!
         
