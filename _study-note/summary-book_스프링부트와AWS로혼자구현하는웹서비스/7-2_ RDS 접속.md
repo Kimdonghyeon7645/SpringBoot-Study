@@ -77,3 +77,26 @@
         ```
         
     3. 테이블 생성, 삽입 쿼리 실행 (한글명 테스트) 
+    
+        ```mysql-sql
+        create table test (
+            id  bigint(20)  not null    auto_increment,
+            content varchar(255)    default null,
+            primary key (id)
+        ) ENGINE=innoDB;
+        
+        insert into test(content) values ('테스트입니다😎');
+        
+        select * from test;
+        ```
+        위 쿼리를 실행해서, 한글 데이터도 잘 등록되지 확인!
+        
+        > #### 테이블 생성은 모든 설정이 끝난 후에...
+        > 
+        > **테이블 생성은 만들어질 당시 설정값을 그대로 유지** -> 자동 변경 X, 강제로 변경해줘야 함
+        > 인코딩 설정 전에 테이블 생성을 해도 마찬가지... 
+        > 앵간하면 테이블은 모든 설정이 끝난 뒤 생성
+    
+### 3. EC2에서 RDS 접속
+
+
