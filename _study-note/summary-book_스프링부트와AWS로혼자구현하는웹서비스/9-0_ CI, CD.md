@@ -46,5 +46,3 @@
 >
 > 특히 **테스팅 자동화**가 중요 =지속적으로 통합하기 위해, 무엇보다 프로젝트가 **완전한 상태임을 보장**하기 위해  
 > (테스트 코드 작성, TDD에 대해 배우고 싶다면, [백명석님 클린코더스 - TDD편 참고](https://www.youtube.com/channel/UCkdVHy6DWwmEim-xjy81x8A/videos))
-
-## 2. CI & CD 툴
