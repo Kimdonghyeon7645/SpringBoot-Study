@@ -19,3 +19,8 @@ notifications:
   email:
     recipients:
       - kkddhh2826@gmail.com
+
+# /home/travis/.travis/functions: line 351: ./gradlew: Permission denied
+# ./gradlew 파일 실행 권한이 없는 경우
+before_install:
+  - chomod +x gradlew
