@@ -23,4 +23,4 @@ notifications:
 # /home/travis/.travis/functions: line 351: ./gradlew: Permission denied
 # ./gradlew 파일 실행 권한이 없는 경우
 before_install:
-  - chomod +x gradlew
+  - chmod +x gradlew
