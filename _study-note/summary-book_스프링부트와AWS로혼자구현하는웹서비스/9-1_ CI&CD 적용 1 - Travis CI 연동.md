@@ -19,6 +19,8 @@
 > 따라서 비용 부담이 가장 적은 *Travis CI*를 사용한다. (초기 서비스 + 공개 repo 기준)  
 > (비공개 repo에선, *AWS CodeBuild*를 추천 [(참고)](https://velog.io/@city7310/%EB%B0%B1%EC%97%94%EB%93%9C%EA%B0%80-%EC%9D%B4%EC%A0%95%EB%8F%84%EB%8A%94-%ED%95%B4%EC%A4%98%EC%95%BC-%ED%95%A8-11.-%EB%B0%B0%ED%8F%AC-%EC%9E%90%EB%8F%99%ED%99%94))
 
+#### 프로젝트 repo에 Travis CI 활성화하기
+
 1. [travis-ci 사이트](https://travis-ci.org/) 접속해서 깃허브 로그인
 2. 오른쪽 위 **[계정 아이콘 -> Settings]** 클릭
 3. **'Legacy Services Integration'** 에서 CI를 적용할 repo 검색 -> 찾은 repo **오른쪽 상태바(토글)** 활성화
