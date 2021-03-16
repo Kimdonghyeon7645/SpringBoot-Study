@@ -25,16 +25,16 @@ before_install:
   - chmod +x gradlew
 
 before_deploy:
-  - zip -r 압축파일이름 *
+  - zip -r SpringBoot-Study *
   - mkdir -p deploy
-  - mv 압축파일이름.zip deploy/압축파일이름.zip
+  - mv SpringBoot-Study.zip deploy/SpringBoot-Study.zip
 
 
 deploy:
   - probider: s3
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
-  bucket: 버킷명
+  bucket: hyeonja-springboot-build
   region: ap-northeast-2
   skip_cleanup: true
   acl: private
