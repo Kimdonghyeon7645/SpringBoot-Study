@@ -76,14 +76,15 @@ before_deploy:    # deploy 명령어 실행되기 전 수행
 
 deploy:   # S3 파일 업로드 or CodeDeploy로 배포 등 = 외부 서비스와 연동될 행위들 선언
     - probider: s3
-    access_key_id: $AWS_ACCESS_KEY    # Travis repo settings 에서 설정한 값
-    secret_access_key: $AWS_SECRET_KEY    # Travis repo settings 에서 설정한 값
-    bucket: 버킷명   # S3 버킷명
-    region: ap-northeast-2
-    skip_cleanup: true    # 빌드가 끝난 뒤 결과물을 삭제(cleanup)하지 않겠다는 의미
-    acl: private    # zip 파일 접근을 private
-    local_dir: deploy   # 아까 생성한 deploy 디렉토리 지정 -> '해당 위치의 파일'들만 S3로 전송
-    wait-until-deployed: true
+      access_key_id: $AWS_ACCESS_KEY    # Travis repo settings 에서 설정한 값
+      secret_access_key: $AWS_SECRET_KEY    # Travis repo settings 에서 설정한 값
+      bucket: 버킷명   # S3 버킷명
+      region: ap-northeast-2
+      skip_cleanup: true    # 빌드가 끝난 뒤 결과물을 삭제(cleanup)하지 않겠다는 의미
+      acl: private    # zip 파일 접근을 private
+      local_dir: deploy   # 아까 생성한 deploy 디렉토리 지정 -> '해당 위치의 파일'들만 S3로 전송
+      wait-until-deployed: true
+# 들여쓰기 잘못하지 않도록 주의!
 ```
 
 설정 끝났으면 **깃허브로 푸시**  
