@@ -32,3 +32,30 @@ CodeDeploy를 사용하기 전, 배포 대상인 **EC2가 CodeDeploy와 연동�
 역할 선택 후, 해당 **EC2 인스턴스를 재부팅** (그래야 역할이 정상적으로 적용)  
 
 
+## 2. CodeDeploy 에이전트 설치
+
+CodeDeploy의 요청을 받을 수 있게 에이전트 설치
+
+1. EC2 접속해서 아래 명령어 입력
+    ```shell script
+    aws s3 cp s3://aws-codedeploy-ap-northeast-2/latest/install . --region ap-northeast-2
+    ```
+    콘솔에 ```download: s3://aws-codedeploy-ap-northeast-2/latest/install to ./install```가 출력되면 다운로드 성공
+2. install 파일로 설치 진행
+    ```shell script
+    chmod +x ./install   # install 파일에 우선 실행 권한을 추가
+    
+    sudo ./install auto    # install 파일 실행해서 설치 진행
+    # 설치 중에,  /usr/bin/env: ruby: No such file or directory
+    # 에러 발생시 루비라는 언어가 설치 안되서 그러니까
+    # sudo yum install ruby
+    # 로 루비 설치 (그 후 다시 install 파일 실행)
+    ```
+
+설치가 끝났으면,  
+```shell script
+sudo service codedeploy-agent status
+```
+로 상태 검사 했을 때, ```The AWS CodeDeploy agent is running as PID (pid값)``` 같이 running 메시지가 출력되면 정상!
+
+
