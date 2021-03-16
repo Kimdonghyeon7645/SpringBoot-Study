@@ -24,3 +24,20 @@ notifications:
 # ./gradlew 파일 실행 권한이 없는 경우
 before_install:
   - chmod +x gradlew
+
+before_deploy:
+  - zip -r 압축파일이름 *
+  - mkdir -p deploy
+  - mv 압축파일이름.zip deploy/압축파일이름.zip
+
+
+deploy:
+  - probider: s3
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  bucket: 버킷명
+  region: ap-northeast-2
+  skip_cleanup: true
+  acl: private
+  local_dir: deploy
+  wait-until-deployed: true
