@@ -108,3 +108,41 @@ CodeDeploy는 *AWS의 배포 삼형제* 중 하나로, CD
 >   -> 현재 프로젝트는 1대 서버다 보니 전체 배포하는 옵션(= *CodeDeployDefault.AllAtOnce* = 한번에 다 배포) 선택  
 
 
+## 5. Travis, S3, CodeDeploy 연동
+
+먼저 S3에서 넘겨줄 **zip 파일 저장할 디렉토리**(```~/app/step2/zip```) 생성  
+-> EC2 서버에서 아래 명령어 실행
+```shell script
+mkdir ~/app/step2 && mkdir ~/app/step2/zip
+
+# Travis CI의 빌드 끝나면 S3에 zip 파일 전송 
+# home/ec2-user/app/step2/zip 로 복사되어 압축 풀 예정 
+```
+
+AWS CodeDeploy 설정을 하기 위해, ```.travis.yml```과 같은 위치에 ```appspec.yml``` 생성  
+-> ```appspec.yml```에 아래 코드 입력
+```yaml
+version: 0.0
+os: linux
+files:
+    - source: /
+      destination: /home/ec2-user/app/step2/zip/
+      overwrite: yes
+```
+
+```.travis.yml```에도 CodeDeploy 내용 추가
+```yaml
+deploy:
+    ...
+
+    - provider: codedeploy
+      access_key_id: $AWS_ACCESS_KEY    # Travis repo settings 에서 설정한 값
+      secret_access_key: $AWS_SECRET_KEY    # Travis repo settings 에서 설정한 값
+      bucket: 버킷명   # S3 버킷명
+      key: springboot-webservice.zip
+      bundle_type: zip    # 압축 확장자
+      application: 웹콘솔에서 등록한 애플리케이션명
+      deployment_group: 웹콘솔에서 등록한 CodeDeploy 배포그룹
+      region: ap-northeast-2
+      wait-until-deployed: true
+```
