@@ -146,3 +146,11 @@ deploy:
       region: ap-northeast-2
       wait-until-deployed: true
 ```
+
+배포가 끝났다면 다음 명령어로 파일들이 잘 도착했는지 확인
+```shell script
+cd /home/ec2-user/app/step2/zip   # 파일이 있을 위치로 이동
+
+ll    # 파일 목록 확인
+```
+프로젝트 파일이 잘 도착했으면 연동 완료!
