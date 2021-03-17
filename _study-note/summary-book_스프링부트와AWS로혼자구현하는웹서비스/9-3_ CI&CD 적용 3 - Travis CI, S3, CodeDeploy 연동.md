@@ -122,12 +122,12 @@ mkdir ~/app/step2 && mkdir ~/app/step2/zip
 AWS CodeDeploy 설정을 하기 위해, ```.travis.yml```과 같은 위치에 ```appspec.yml``` 생성  
 -> ```appspec.yml```에 아래 코드 입력
 ```yaml
-version: 0.0
+version: 0.0    # CodeDeploy의 버전 (프로젝트 버전이 아니기에 0.0 외 다른 버전 사용시 오류 발생)
 os: linux
 files:
-    - source: /
-      destination: /home/ec2-user/app/step2/zip/
-      overwrite: yes
+    - source: /   # CodeDeploy에서 전달해 준 파일 중 destination으로 이동시킬 대상 지정 (루트 경로(/) = 전체 파일)
+      destination: /home/ec2-user/app/step2/zip/    # source에서 지정된 파일을 받을 위치 
+      overwrite: yes      # 기존에 파일들이 있으면 덮어쓸지 유무 (yes = 덮어씀)
 ```
 
 ```.travis.yml```에도 CodeDeploy 내용 추가
@@ -141,7 +141,7 @@ deploy:
       bucket: 버킷명   # S3 버킷명
       key: springboot-webservice.zip      # 빌드 파일을 압축해 전달
       bundle_type: zip    # 압축 확장자
-      application: 웹콘솔에서 등록한 애플리케이션명
+      application: 웹콘솔에서 등록한 CodeDeploy 애플리케이션명
       deployment_group: 웹콘솔에서 등록한 CodeDeploy 배포그룹
       region: ap-northeast-2
       wait-until-deployed: true
