@@ -139,7 +139,7 @@ deploy:
       access_key_id: $AWS_ACCESS_KEY    # Travis repo settings 에서 설정한 값
       secret_access_key: $AWS_SECRET_KEY    # Travis repo settings 에서 설정한 값
       bucket: 버킷명   # S3 버킷명
-      key: springboot-study.zip      # 빌드 파일을 압축해 전달할 S3의 파일명
+      key: springboot-study.zip      # S3의 파일명 (빌드 파일을 압축해 전달할 대상)
       bundle_type: zip    # 압축 확장자
       application: 웹콘솔에서 등록한 CodeDeploy 애플리케이션명
       deployment_group: 웹콘솔에서 등록한 CodeDeploy 배포그룹
