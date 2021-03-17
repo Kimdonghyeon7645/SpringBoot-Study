@@ -68,6 +68,8 @@ AWS는 이러한 서비스로 **IAM(Identity and Access Management)** 지원
 
 이제 Travis CI에 빌드한 Jar 파일을 S3에 올릴 수 있도록, ```.travis.yml```파일에 아래 코드를 추가
 ```yaml
+...
+
 before_deploy:    # deploy 명령어 실행되기 전 수행
     - zip -r 압축파일이름 *   # 현재 위치 모든 파일(*)을 압축파일이름으로 압축(zip)
     - mkdir -p deploy   # deploy 라는 디렉토리를 Travis CI가 실행중인 위치에 생성
@@ -85,6 +87,8 @@ deploy:   # S3 파일 업로드 or CodeDeploy로 배포 등 = 외부 서비스�
       local_dir: deploy   # 아까 생성한 deploy 디렉토리 지정 -> '해당 위치의 파일'들만 S3로 전송
       wait-until-deployed: true
 # 들여쓰기 잘못하지 않도록 주의!
+
+...
 ```
 
 설정 끝났으면 **깃허브로 푸시**  
