@@ -1,4 +1,4 @@
-# 9-1. CI&CD 적용 1 - Travis CI 연동하기
+# 9-1. Travis CI 연동하기
 
 ![image](https://user-images.githubusercontent.com/48408417/111033906-ac6fe400-8456-11eb-9672-6e59fef14bf0.png)  
 
