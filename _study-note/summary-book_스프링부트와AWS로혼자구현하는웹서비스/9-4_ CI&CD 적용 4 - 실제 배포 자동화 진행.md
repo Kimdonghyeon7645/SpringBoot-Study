@@ -39,7 +39,7 @@ else
 fi
 
 echo ">> 새 애플리케이션 배포"
-JAR_NAME=$(ls -tr $REPOSITORY/ | grep jar | tail -n 1)  
+JAR_NAME=$(ls -tr $REPOSITORY/*.jar | tail -n 1)    # /step2에서 수정 
 echo ">> JAR 파일명 : $JAR_NAME"
 
 echo ">> $JAR_NAME 에 실행권한 추가"
