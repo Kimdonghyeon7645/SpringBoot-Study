@@ -87,3 +87,21 @@ hooks:      # CodeDeploy 배포 단계에서 실행할 명령어 지정
       runas: ec2-user   # 권한
 ```
 
+## 4. 실제 배포 자동화 진행해보기
+
+이제 커밋하고 푸시했을 때, **Travis CI, CodeDeploy** 두 곳에서 모두 성공 메시지를 확인하면 배포 성공!
+
+앞으로는 코드 수정시, ```build.gradle``` 에서
+```shell script
+# version '1.0-SNAPSHOT' 이 부분을
+version '1.0.1-SNAPSHOT'    # 이렇게 수정
+```
+프로젝트 버전을 변경해주고, 실제 눈으로도 변경됬는지 알 수 있게,  
+-> ```src/main/resource/templates/index.mustache``` 내용을 아래처럼 살짝 수정해주자.
+```html
+...
+<h1>스프링 부트로 시작하는 웹 서비스 ver.2</h1>
+...
+```
+
+이후 깃허브로 커밋과 푸시를 했을 때, 브라우저에서 ec2서버 dns 주소로 접속하면, **변경된 코드가 자동으로 배포**된 것을 확인할 수 있다!
