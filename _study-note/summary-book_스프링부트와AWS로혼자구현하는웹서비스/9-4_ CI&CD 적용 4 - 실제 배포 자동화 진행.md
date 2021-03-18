@@ -46,11 +46,12 @@ echo ">> $JAR_NAME 에 실행권한 추가"
 chmod +x $JAR_NAME    # 여기서 Jar 파일은 실행권한이 없는 상태이므로, nohup으로 실행할 수 있는 권한 부여
 
 nohup java -jar \
-    -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app/application-oauth.properties,home/ec2-user/app/application-real-db.properties, classpath:/application-real.properties \
+    -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app/application-oauth.properties,home/ec2-user/app/application-real-db.properties,classpath:/application-real.properties \
     -Dspring.profiles.active=real \
     $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &    # nohup 실행 시 CodeDeploy는 무한 대기하는데, 이 이슈를 해결하기 위해 nohup.out 파일을 표준 입출력으로 사용
 # 이렇게 안하면 nohup.out 파일이 생기지 않고, CodeDeploy 로그에 표준 입출력이 출력 + nohup이 끝나기 전까지 CodeDeploy로 끝나지 않으니 꼭 이렇게 할 것!
 ```
+(```Error: Unable to access jarfile classpath:/application-real.properties``` 가 뜬다면, ```nohup```의 ```-Dspring.config.location=```을 대입하는 값들의 ```,``` 사이에 있는 **공백**을 빼주자...)
 
 
 ## 2. .travis.yml 파일 수정
