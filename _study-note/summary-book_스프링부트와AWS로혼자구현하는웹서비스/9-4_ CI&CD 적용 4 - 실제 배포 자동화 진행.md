@@ -52,6 +52,38 @@ nohup java -jar \
 # 이렇게 안하면 nohup.out 파일이 생기지 않고, CodeDeploy 로그에 표준 입출력이 출력 + nohup이 끝나기 전까지 CodeDeploy로 끝나지 않으니 꼭 이렇게 할 것!
 ```
 
+
 ## 2. .travis.yml 파일 수정
 
+지금까지는 프로젝트의 모든 파일을 zip 파일로 만들었는데, 실제 필요한 파일들은 **Jar, appspec.yml, 배포를 위한 스크립트들**밖에 없다. (```.travis.yml```은 Travis CI에서만 필요, CodeDeploy에선 불필요)  
+-> 이외 나머지는 포함하지 않고 압축하도록 ```.travis.yml``` 파일의 ```before_deploy```(s3에 올릴 압축파일을 만드는 과정)을 수정해준다.    
+```yaml
+before_deploy:
+  - mkdir -p before_deploy  # Travis CI는 S3로 특정 파일만 업로드 불가, 디렉토리 단위로만 업로드 가능 (zip에 포함시킬 파일들을 담을 디렉토리는 항상 생성)
+  - cp scripts/*.sh before-deploy/    # 배포를 위한 스크립트들
+  - cp appspec.yml before-deploy/    # appspec.yml
+  - cp build/libs/*.jar before-deploy/     # Jar
+  - cd before-deploy && zip -r before-deploy *  # before-deploy로 이동 후 전체 압축
+  
+  - cd ../ && mkdir -p deploy   # 상위 디렉토리 경로에서 deploy 디렉토리 생성
+  - mv before-deploy/before-deploy.zip deploy/springboot-study.zip    # deploy/로 zip 파일 이동(+이름 변경)
+```
+
+
+## 3. appspec.yml 파일 수정
+
+아래 코드를 ```appspec.yml```에 추가 (들여쓰기 주의! 들여쓰기 잘못되면 배포 실패)
+```yaml
+permissions:    # CodeDeploy에서 EC2 서버로 넘겨준 파일들을 모두 ec2-user 권한을 갖도록 함
+    - object: /
+      pattern: "**"
+      owner: ec2-user
+      group: ec2-user
+
+hooks:      # CodeDeploy 배포 단계에서 실행할 명령어 지정
+    ApplicationStart:     # ApplicationStart단계에서 실행 시작
+    - location: deploy.sh     # 실행할 명령어(스크립트)
+      timeout: 60     # 스크립트 실행 시간 제한(무한정 기다릴 수 없으니, 60초 이상 스크립트가 수행되면 실패)
+      runas: ec2-user   # 권한
+```
 
