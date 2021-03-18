@@ -106,3 +106,23 @@ version '1.0.1-SNAPSHOT'    # 이렇게 수정
 ```
 
 이후 깃허브로 커밋과 푸시를 했을 때, 브라우저에서 ec2서버 dns 주소로 접속하면, **변경된 코드가 자동으로 배포**된 것을 확인할 수 있다!
+
+
+## 5. CodeDeploy 로그 확인
+
+이렇게 배포가 끝났는데, 배포가 실패했을 때는 어떻게 해야될까?  
+-> 특히나 CodeDeploy 같은 AWS 지원 서비스는 로그 찾는 법을 모르면 오류를 해결하기 어렵다. -> **CodeDeploy 로그** 확인 법을 알아두자.
+
+CodeDeploy 에 관한 대부분 정보는 ```/opt/codedeploy-agent/deployment-root```에 있다.
+```shell script
+cd /opt/codedeploy-agent/deployment-root    # 로 해당 경로로 이동하고
+ll    # 그 안의 목록을 출력해보면, 아래와 같다.
+
+total 0
+drwxr-xr-x 2 root root 247 Mar 18 16:14 deployment-instructions
+drwxr-xr-x 2 root root  46 Mar 18 15:10 deployment-logs     # CodeDeploy 로그 파일 -> 배포 내용 중 표준 입출력 내용 + 작성한 echo 내용 표시
+drwxr-xr-x 7 root root 101 Mar 18 16:14 ea350c6b-d183-40ea-ad5b-7a8a1b110348    # CodeDeploy ID -> 이 안에는 "배포한 단위별로 배포 파일"들이 존재
+drwxr-xr-x 2 root root   6 Mar 18 16:14 ongoing-deployment
+```
+
+이렇게 해서, 테스트/빌드/배포까지 전부 자동화 끝!
